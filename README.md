@@ -13,16 +13,20 @@
 
 ## Build
 
+### MySQL
+
 ```bash
+cd mysql
 ./build.sh
 ```
 
 
 
-## Init
+### Monorail
 
 ```bash
-./init.sh
+cd monorail
+./build.sh
 ```
 
 
