@@ -47,15 +47,15 @@ USER craftslab
 WORKDIR /home/craftslab
 RUN git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git --depth 1
 ENV PATH=/home/craftslab/depot_tools:$PATH
-RUN sudo apt install -y apt-transport-https ca-certificates gnupg && \
-    echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list && \
-    curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add - && \
-    sudo apt update && \
-    sudo apt install -y google-cloud-sdk google-cloud-sdk-app-engine-python-extras google-cloud-sdk-app-engine-python
 RUN sudo apt update && \
     sudo apt install -y automake libmysqlclient-dev python2.7 python2.7-dev python-is-python2 && \
     curl -L https://bootstrap.pypa.io/pip/2.7/get-pip.py -o /tmp/get-pip.py && \
     sudo python /tmp/get-pip.py
+#RUN sudo apt install -y apt-transport-https ca-certificates gnupg && \
+#    echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list && \
+#    curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add - && \
+#    sudo apt update && \
+#    sudo apt install -y google-cloud-sdk google-cloud-sdk-app-engine-python-extras google-cloud-sdk-app-engine-python
 
 USER craftslab
 WORKDIR /home/craftslab
