@@ -1,13 +1,13 @@
-# monoraildeploy
+# monoraildocker
 
-[![License](https://img.shields.io/github/license/craftslab/monoraildeploy.svg?color=brightgreen)](https://github.com/craftslab/monoraildeploy/blob/main/LICENSE)
-[![Tag](https://img.shields.io/github/tag/craftslab/monoraildeploy.svg?color=brightgreen)](https://github.com/craftslab/monoraildeploy/tags)
+[![License](https://img.shields.io/github/license/craftslab/monoraildocker.svg?color=brightgreen)](https://github.com/craftslab/monoraildocker/blob/main/LICENSE)
+[![Tag](https://img.shields.io/github/tag/craftslab/monoraildocker.svg?color=brightgreen)](https://github.com/craftslab/monoraildocker/tags)
 
 
 
 ## Introduction
 
-*monoraildeploy* is the Monorail deployment for issue tracking.
+*monoraildocker* is the Monorail Docker for issue tracking.
 
 
 
