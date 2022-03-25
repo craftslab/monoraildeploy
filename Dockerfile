@@ -37,6 +37,14 @@ ENV SHELL="/bin/bash"
 
 USER craftslab
 WORKDIR /home/craftslab
+RUN curl -LO https://nodejs.org/dist/v14.17.5/node-v14.17.5-linux-x64.tar.xz && \
+    tar Jxvf node*.tar.xz && \
+    rm node*.tar.xz && \
+    mv node-* node
+ENV PATH=/home/craftslab/node/bin:$PATH
+
+USER craftslab
+WORKDIR /home/craftslab
 RUN git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git --depth 1
 ENV PATH=/home/craftslab/depot_tools:$PATH
 RUN sudo apt install -y apt-transport-https ca-certificates gnupg && \
@@ -45,7 +53,7 @@ RUN sudo apt install -y apt-transport-https ca-certificates gnupg && \
     sudo apt update && \
     sudo apt install -y google-cloud-sdk google-cloud-sdk-app-engine-python-extras google-cloud-sdk-app-engine-python
 RUN sudo apt update && \
-    sudo apt install -y automake python2.7 python2.7-dev python-is-python2 && \
+    sudo apt install -y automake libmysqlclient-dev python2.7 python2.7-dev python-is-python2 && \
     curl -L https://bootstrap.pypa.io/pip/2.7/get-pip.py -o /tmp/get-pip.py && \
     sudo python /tmp/get-pip.py
 
@@ -55,7 +63,7 @@ RUN fetch infra && \
     pushd infra/appengine/monorail && \
     gclient runhooks && \
     make dev_deps && \
-    maek deps && \
+    make deps && \
     popd
 
 USER craftslab
