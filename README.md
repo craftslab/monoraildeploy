@@ -1,22 +1,28 @@
+# monoraildeploy
+
+[![License](https://img.shields.io/github/license/craftslab/monoraildeploy.svg?color=brightgreen)](https://github.com/craftslab/monoraildeploy/blob/main/LICENSE)
+[![Tag](https://img.shields.io/github/tag/craftslab/monoraildeploy.svg?color=brightgreen)](https://github.com/craftslab/monoraildeploy/tags)
+
+
+
+## Introduction
+
+*monoraildeploy* is the Monorail deployment for issue tracking.
+
+
+
 ## Build
 
 ```bash
-docker build -f Dockerfile --rm -t monorail:latest .
+./build.sh
 ```
 
 
 
-## Database
+## Deploy
 
 ```bash
-```
-
-
-
-## Run
-
-```bash
-docker run -it --rm monorail:latest
+./deploy.sh
 ```
 
 
