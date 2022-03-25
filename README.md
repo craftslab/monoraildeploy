@@ -31,10 +31,10 @@ cd monorail
 
 
 
-## Deploy
+## Run
 
 ```bash
-./deploy.sh
+./run.sh
 ```
 
 
@@ -42,6 +42,7 @@ cd monorail
 ## Access
 
 ```bash
+cd mysql
 ./access.sh
 ```
 
