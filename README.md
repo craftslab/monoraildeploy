@@ -19,10 +19,26 @@
 
 
 
+## Init
+
+```bash
+./init.sh
+```
+
+
+
 ## Deploy
 
 ```bash
 ./deploy.sh
+```
+
+
+
+## Access
+
+```bash
+./access.sh
 ```
 
 

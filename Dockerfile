@@ -44,13 +44,20 @@ RUN sudo apt install -y apt-transport-https ca-certificates gnupg && \
     curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add - && \
     sudo apt update && \
     sudo apt install -y google-cloud-sdk google-cloud-sdk-app-engine-python-extras google-cloud-sdk-app-engine-python
+RUN sudo apt-get install automake && \
+    sudo apt install python2.7 python2.7-dev python-is-python2 && \
+    curl -O /tmp/get-pip.py https://bootstrap.pypa.io/pip/2.7/get-pip.py && \
+    sudo python /tmp/get-pip.py
 
 USER craftslab
 WORKDIR /home/craftslab
 RUN fetch infra && \
     pushd infra/appengine/monorail && \
     gclient runhooks && \
+    make dev_deps && \
+    maek deps && \
     popd
 
 USER craftslab
-WORKDIR /home/craftslab
+WORKDIR /home/craftslab/infra/appengine/monorail
+CMD [ "make", "serve" ]
