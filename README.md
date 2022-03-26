@@ -48,6 +48,15 @@ cd mysql
 
 
 
+## Manage
+
+```bash
+cd mysql
+./adminer.sh
+```
+
+
+
 ## Reference
 
 - [monorail](https://chromium.googlesource.com/infra/infra/+/refs/heads/main/appengine/monorail/)
