@@ -16,6 +16,11 @@ services:
     volumes:
       - $PWD/mysql/conf:/etc/mysql/conf.d
       - $PWD/mysql/data:/var/lib/mysql
+  redis:
+    image: craftslab/monoraildocker-redis:latest
+    network_mode: "host"
+    ports:
+      - "6379:6379"
   monorail:
     image: craftslab/monoraildocker-monorail:latest
     network_mode: "host"
