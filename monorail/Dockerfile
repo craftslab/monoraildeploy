@@ -62,6 +62,15 @@ WORKDIR /home/craftslab
 RUN fetch infra && \
     pushd infra/appengine/monorail && \
     gclient runhooks && \
+    popd
+COPY 0001-Set-user-and-password-for-sql-connection.patch infra/appengine/monorail/
+RUN pushd infra/appengine/monorail && \
+    git config user.name "foo" && \
+    git config user.email "foo@example.com" && \
+    git apply *.patch && \
+    rm *.patch && \
+    popd
+RUN pushd infra/appengine/monorail && \
     make dev_deps && \
     make deps && \
     popd
