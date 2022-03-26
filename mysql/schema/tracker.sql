@@ -12,7 +12,7 @@ CREATE TABLE StatusDef (
   id INT NOT NULL AUTO_INCREMENT,
   project_id SMALLINT UNSIGNED NOT NULL,
   status VARCHAR(80) BINARY NOT NULL,
-  rank SMALLINT UNSIGNED,
+  `rank` SMALLINT UNSIGNED,
   means_open BOOLEAN,
   docstring TEXT,
   deprecated BOOLEAN DEFAULT FALSE,
@@ -71,7 +71,7 @@ CREATE TABLE LabelDef (
   id INT NOT NULL AUTO_INCREMENT,
   project_id SMALLINT UNSIGNED NOT NULL,
   label VARCHAR(80) BINARY NOT NULL COLLATE utf8mb4_unicode_ci,
-  rank SMALLINT UNSIGNED,
+  `rank` SMALLINT UNSIGNED,
   docstring TEXT,
   deprecated BOOLEAN DEFAULT FALSE,
 
@@ -95,7 +95,7 @@ CREATE TABLE Component2Label (
 CREATE TABLE FieldDef (
   id INT NOT NULL AUTO_INCREMENT,
   project_id SMALLINT UNSIGNED NOT NULL,
-  rank SMALLINT UNSIGNED,
+  `rank` SMALLINT UNSIGNED,
 
   field_name VARCHAR(80) BINARY NOT NULL,
   -- TODO(jrobbins): more types
@@ -239,7 +239,7 @@ CREATE TABLE Issue2Label (
 CREATE TABLE IssuePhaseDef (
   id INT NOT NULL AUTO_INCREMENT,
   name VARCHAR(255) BINARY NOT NULL,
-  rank SMALLINT UNSIGNED,
+  `rank` SMALLINT UNSIGNED,
 
   PRIMARY KEY (id)
 ) ENGINE=INNODB;
@@ -326,7 +326,7 @@ CREATE TABLE IssueRelation (
   -- Read as: src issue is blocked on dst issue.
   kind ENUM ('blockedon', 'mergedinto') NOT NULL,
 
-  rank BIGINT,
+  `rank` BIGINT,
 
   PRIMARY KEY (issue_id, dst_issue_id, kind),
   INDEX (issue_id),
@@ -559,7 +559,7 @@ CREATE TABLE ProjectIssueConfig (
 
 CREATE TABLE FilterRule (
   project_id SMALLINT UNSIGNED NOT NULL,
-  rank SMALLINT UNSIGNED,
+  `rank` SMALLINT UNSIGNED,
 
   -- TODO: or should this be broken down into structured fields?
   predicate TEXT NOT NULL,
@@ -651,12 +651,12 @@ CREATE TABLE SavedQueryExecutesInProject (
 -- admin pages.
 CREATE TABLE Project2SavedQuery (
   project_id SMALLINT UNSIGNED NOT NULL,
-  rank SMALLINT UNSIGNED NOT NULL,
+  `rank` SMALLINT UNSIGNED NOT NULL,
   query_id INT NOT NULL,
 
   -- TODO(jrobbins): visibility: owners, committers, contributors, anyone
 
-  PRIMARY KEY (project_id, rank),
+  PRIMARY KEY (project_id, `rank`),
   FOREIGN KEY (project_id) REFERENCES Project(project_id),
   FOREIGN KEY (query_id) REFERENCES SavedQuery(id)
 ) ENGINE=INNODB;
@@ -665,14 +665,14 @@ CREATE TABLE Project2SavedQuery (
 -- These are personal saved queries.
 CREATE TABLE User2SavedQuery (
   user_id INT UNSIGNED NOT NULL,
-  rank SMALLINT UNSIGNED NOT NULL,
+  `rank` SMALLINT UNSIGNED NOT NULL,
   query_id INT NOT NULL,
 
   -- TODO(jrobbins): daily and weekly digests, and the ability to have
   -- certain subscriptions go to username+SOMETHING@example.com.
   subscription_mode ENUM ('noemail', 'immediate') DEFAULT 'noemail' NOT NULL,
 
-  PRIMARY KEY (user_id, rank),
+  PRIMARY KEY (user_id, `rank`),
   FOREIGN KEY (user_id) REFERENCES User(user_id),
   FOREIGN KEY (query_id) REFERENCES SavedQuery(id)
 ) ENGINE=INNODB;
@@ -772,7 +772,7 @@ CREATE TABLE Hotlist2Issue (
   hotlist_id INT UNSIGNED NOT NULL,
   issue_id INT NOT NULL,
 
-  rank BIGINT NOT NULL,
+  `rank` BIGINT NOT NULL,
   adder_id INT UNSIGNED,
   added INT,
   note TEXT,
