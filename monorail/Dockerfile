@@ -77,4 +77,5 @@ RUN pushd infra/appengine/monorail && \
 
 USER craftslab
 WORKDIR /home/craftslab/infra/appengine/monorail
+ENV NODE_OPTIONS=--openssl-legacy-provider
 CMD [ "make", "serve" ]
