@@ -67,7 +67,7 @@ COPY 0001-Set-user-and-password-for-sql-connection.patch infra/appengine/monorai
 RUN pushd infra/appengine/monorail && \
     git config user.name "foo" && \
     git config user.email "foo@example.com" && \
-    git apply *.patch && \
+    git am *.patch && \
     rm *.patch && \
     popd
 RUN pushd infra/appengine/monorail && \
